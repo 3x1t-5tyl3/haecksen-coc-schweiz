@@ -1,4 +1,4 @@
-# Code of Conduct for Haecksen Schweizs
+# Code of Conduct for Haecksen Schweiz
 
 ## TL;DR
 
