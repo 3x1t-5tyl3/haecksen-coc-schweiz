@@ -25,10 +25,15 @@ jobs:
       run: node scripts/convert.js
 
     - name: Create Release
-      id: create_release
-      uses: actions/create-release@v1
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  id: create_release
+  uses: actions/create-release@v1
+  env:
+    GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
+  with:
+    tag_name: v5
+    release_name: Release 5
+    draft: false
+    prerelease: false
       with:
         tag_name: v${{ github.run_number }}
         release_name: Release ${{ github.run_number }}
