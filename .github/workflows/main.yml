@@ -16,7 +16,7 @@ jobs:
     - name: Set up Node.js
       uses: actions/setup-node@v2
       with:
-        node-version: '22'
+        node-version: '20'
 
     - name: Install dependencies
       run: npm install
@@ -25,15 +25,10 @@ jobs:
       run: node scripts/convert.js
 
     - name: Create Release
-  id: create_release
-  uses: actions/create-release@v1
-  env:
-    GITHUB_TOKEN: ${{ secrets.MY_GITHUB_TOKEN }}
-  with:
-    tag_name: v5
-    release_name: Release 5
-    draft: false
-    prerelease: false
+      id: create_release
+      uses: actions/create-release@v1
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       with:
         tag_name: v${{ github.run_number }}
         release_name: Release ${{ github.run_number }}
@@ -49,3 +44,8 @@ jobs:
         asset_path: ./output.html
         asset_name: output.html
         asset_content_type: text/html
+    - name: Upload Build Artifacts
+      uses: actions/upload-artifact@v3
+      with:
+        name: output-html
+        path: ./output.html
