@@ -2,7 +2,7 @@ const fs = require('fs');
 const path = require('path');
 const marked = require('marked');
 
-const mdFolderPath = path.join(__dirname, '..', 'md');
+const mdFolderPath = path.join(__dirname, 'md');
 
 fs.readdir(mdFolderPath, (err, files) => {
     if (err) {
